@@ -33,3 +33,10 @@ If `n` is prime, or if no factor with a smooth enough `p-1` exists within the co
 - `gcd(a, b)`: Returns the greatest common divisor as a `bigint`.
 - `modPow(base, exponent, modulus)`: Returns `(base ** exponent) % modulus` as a `bigint`.
 - `isProbablePrime(n)`: Returns `true` if `n` is probably prime, `false` if definitely composite.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
